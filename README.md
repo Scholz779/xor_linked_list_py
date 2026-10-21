@@ -25,3 +25,10 @@ This implementation applies the XOR trick to `id()` of Python node objects. `id(
 The list rejects duplicate node identity — adding the same `XorNode` object twice, or a node already in another list, is not supported. The XOR scheme is only decodable while every node appears at most once, so `remove()` raises `ValueError` if it detects the same node twice during its walk. If you want the same *value* in two places, create two `XorNode` objects (which is what `append`/`prepend` do for you).
 
 Removing a node you did not obtain from the list (an orphan) raises `ValueError`. The list cannot verify membership without walking, so this is checked at `remove()` time rather than at insert time.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
