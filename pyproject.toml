@@ -1,6 +1,6 @@
 [project]
 name = "xor-linked-list-py"
-version = "0.1.1"
+version = "0.1.2"
 description = "Doubly linked list using XOR-encoded pointer to store both links in one field"
 requires-python = ">=3.10"
 dependencies = []
